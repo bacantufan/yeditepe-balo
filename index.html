@@ -10,7 +10,10 @@
     YEDİTEPE MEZUNİYET BALOSU - INDEX.HTML
     1) Google Form linki gelince aşağıdaki FORM_URL değerini değiştir.
     2) Fotoğrafları assets klasörüne koyup gallery bölümündeki image path'lerini değiştir.
-    3) İstersen Yeditepe logosunu assets/yeditepe-logo.png olarak ekleyip .brand-mark içine img koyabilirsin.
+    3) Logo dosyalarını assets klasörüne koy:
+       - assets/yeditepe-emblem-header.png  → üst menüde küçük amblem
+       - assets/yeditepe-logo-full-transparent.png → hero alanında tam logo
+       En temiz sonuç için logolar transparan PNG/SVG olmalı.
   -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,18 +192,54 @@
       min-width: 210px;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
+    .brand-logo-shell {
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
-      border-radius: 50%;
+      flex: 0 0 auto;
+      border-radius: 18px;
       background:
-        radial-gradient(circle at 35% 28%, rgba(255, 241, 189, 0.98), rgba(216, 183, 106, 0.74) 30%, rgba(47, 125, 211, 0.82) 63%, rgba(2, 12, 32, 0.96));
-      color: #061226;
-      font-family: "Playfair Display", serif;
-      font-weight: 800;
-      box-shadow: 0 0 0 6px rgba(47, 125, 211, 0.12), 0 14px 30px rgba(47, 125, 211, 0.32);
+        radial-gradient(circle at 35% 25%, rgba(255, 241, 189, 0.22), transparent 42%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow:
+        0 0 0 6px rgba(47, 125, 211, 0.08),
+        0 14px 30px rgba(0, 35, 88, 0.36),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .brand-logo-shell::after {
+      content: "";
+      position: absolute;
+      inset: -35%;
+      background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.34) 48%, transparent 60%);
+      transform: translateX(-80%) rotate(8deg);
+      transition: transform 0.75s ease;
+      pointer-events: none;
+    }
+
+    .brand:hover .brand-logo-shell::after {
+      transform: translateX(80%) rotate(8deg);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 0 8px rgba(255, 241, 189, 0.18))
+        drop-shadow(0 9px 18px rgba(0, 28, 72, 0.34));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .brand:hover .brand-logo {
+      transform: scale(1.06);
+      filter:
+        drop-shadow(0 0 12px rgba(255, 241, 189, 0.26))
+        drop-shadow(0 12px 22px rgba(0, 28, 72, 0.44));
     }
 
     .brand-text strong {
@@ -360,6 +399,34 @@
       grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
       align-items: center;
       gap: 52px;
+    }
+
+    .identity-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      max-width: min(100%, 680px);
+      margin-bottom: 16px;
+      padding: 10px 15px 10px 11px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.065);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.18);
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .identity-strip img {
+      width: 210px;
+      max-height: 42px;
+      object-fit: contain;
+      object-position: left center;
+      filter:
+        drop-shadow(0 0 10px rgba(255, 241, 189, 0.14))
+        drop-shadow(0 7px 14px rgba(0, 20, 54, 0.28));
     }
 
     .eyebrow {
@@ -1441,6 +1508,17 @@
     }
 
     @media (max-width: 760px) {
+      .identity-strip {
+        border-radius: 22px;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .identity-strip img {
+        width: 132px;
+        max-height: 34px;
+      }
+
       .container {
         width: min(100% - 28px, var(--container));
       }
@@ -1596,7 +1674,9 @@
     <header class="site-header">
       <nav class="nav" id="nav">
         <a href="#top" class="brand" aria-label="Yeditepe Mezuniyet Balosu ana sayfa">
-          <div class="brand-mark">Y</div>
+          <div class="brand-logo-shell">
+            <img class="brand-logo" src="assets/yeditepe-emblem-header.png" alt="Yeditepe Üniversitesi Logosu" />
+          </div>
           <div class="brand-text">
             <strong>Yeditepe Üniversitesi</strong>
             <span>2026 Mezuniyet Balosu</span>
@@ -1632,10 +1712,16 @@
       <section class="hero">
         <div class="container hero-layout">
           <div class="hero-content" data-reveal>
+            <div class="identity-strip">
+              <img src="assets/yeditepe-logo-full-transparent.png" alt="Yeditepe Üniversitesi Logosu" />
+              <span data-lang="tr">Resmi Mezuniyet Balosu</span>
+              <span data-lang="en">Official Graduation Ball</span>
+            </div>
+
             <div class="eyebrow">
               <span class="pulse-dot"></span>
-              <span data-lang="tr">Yeditepe Üniversitesi · 13 Temmuz 2026 · Çırağan Sarayı</span>
-              <span data-lang="en">Yeditepe University · July 13, 2026 · Çırağan Palace</span>
+              <span data-lang="tr">13 Temmuz 2026 · Çırağan Sarayı</span>
+              <span data-lang="en">July 13, 2026 · Çırağan Palace</span>
             </div>
 
             <h1>
