@@ -430,82 +430,137 @@
     }
 
     .anniversary-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  width: fit-content;
-  max-width: min(100%, 640px);
-  margin: 0 0 20px;
-  padding: 14px 18px;
-  border-radius: 26px;
-  background: linear-gradient(
-    135deg,
-    rgba(250, 250, 252, 0.98),
-    rgba(244, 245, 248, 0.96)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.88);
-  box-shadow:
-    0 18px 42px rgba(0, 20, 54, 0.20),
-    0 0 22px rgba(255, 255, 255, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-}
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      width: fit-content;
+      max-width: min(100%, 640px);
+      margin: 0 0 20px;
+      padding: 14px 18px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(250, 250, 252, 0.98), rgba(244, 245, 248, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      box-shadow:
+        0 18px 42px rgba(0, 20, 54, 0.20),
+        0 0 22px rgba(255, 255, 255, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
 
-.anniversary-badge::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 0% 0%, rgba(255,255,255,0.72), transparent 34%),
-    linear-gradient(90deg, rgba(255,255,255,0.10), transparent 42%);
-  pointer-events: none;
-}
+    .anniversary-badge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.72), transparent 34%),
+        linear-gradient(90deg, rgba(255,255,255,0.10), transparent 42%);
+      pointer-events: none;
+    }
 
-.anniversary-badge::after {
-  content: "";
-  position: absolute;
-  inset: -45%;
-  background: linear-gradient(
-    115deg,
-    transparent 36%,
-    rgba(255,255,255,0.55) 49%,
-    transparent 62%
-  );
-  transform: translateX(-86%) rotate(8deg);
-  animation: logoSheen 7s ease-in-out infinite;
-  pointer-events: none;
-}
+    .anniversary-badge::after {
+      content: "";
+      position: absolute;
+      inset: -45%;
+      background: linear-gradient(115deg, transparent 36%, rgba(255,255,255,0.55) 49%, transparent 62%);
+      transform: translateX(-86%) rotate(8deg);
+      animation: logoSheen 7s ease-in-out infinite;
+      pointer-events: none;
+    }
 
-@keyframes logoSheen {
-  0%, 50% {
-    transform: translateX(-86%) rotate(8deg);
-  }
-  68%, 100% {
-    transform: translateX(86%) rotate(8deg);
-  }
-}
+    @keyframes logoSheen {
+      0%, 50% { transform: translateX(-86%) rotate(8deg); }
+      68%, 100% { transform: translateX(86%) rotate(8deg); }
+    }
 
-.anniversary-badge img {
-  width: clamp(220px, 28vw, 340px);
-  max-height: 80px;
-  object-fit: contain;
-  object-position: left center;
-  position: relative;
-  z-index: 1;
-}
+    .anniversary-badge img {
+      width: clamp(220px, 28vw, 340px);
+      max-height: 80px;
+      object-fit: contain;
+      object-position: left center;
+      position: relative;
+      z-index: 1;
+    }
 
-.anniversary-badge span {
-  position: relative;
-  z-index: 1;
-  color: #0c1c3f;
-  font-size: 0.9rem;
-  line-height: 1.28;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  max-width: 200px;
-}
+    .anniversary-badge span {
+      position: relative;
+      z-index: 1;
+      color: #0c1c3f;
+      font-size: 0.9rem;
+      line-height: 1.28;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      max-width: 200px;
+    }
+
+    .critical-notice {
+      border: 1px solid rgba(216,183,106,0.34);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(216,183,106,0.18), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045));
+      backdrop-filter: blur(22px);
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+    }
+
+    .critical-notice h3 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.7rem, 3vw, 2.65rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      margin-bottom: 14px;
+    }
+
+    .critical-notice .notice-intro {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 860px;
+      margin-bottom: 18px;
+    }
+
+    .critical-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .critical-item {
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 22px;
+      background: rgba(7,9,17,0.34);
+      padding: 17px;
+    }
+
+    .critical-item strong {
+      display: block;
+      color: var(--gold-2);
+      margin-bottom: 7px;
+      font-size: 0.98rem;
+    }
+
+    .critical-item p {
+      color: var(--muted);
+      line-height: 1.58;
+      font-size: 0.92rem;
+    }
+
+    .quota-alert {
+      margin-top: 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(216,183,106,0.36);
+      background: rgba(216,183,106,0.10);
+      padding: 18px;
+      color: var(--cream);
+      line-height: 1.65;
+    }
+
+    .quota-alert strong {
+      color: var(--gold-2);
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -1597,25 +1652,32 @@
         max-height: 30px;
       }
 
-      @media (max-width: 760px) {
-  .anniversary-badge {
-    width: 100%;
-    align-items: center;
-    padding: 12px 14px;
-    border-radius: 20px;
-    gap: 12px;
-  }
+      .anniversary-badge {
+        width: 100%;
+        align-items: center;
+        padding: 12px 14px;
+        border-radius: 20px;
+        gap: 12px;
+      }
 
-  .anniversary-badge img {
-    width: 170px;
-    max-height: 56px;
-  }
+      .anniversary-badge img {
+        width: 170px;
+        max-height: 56px;
+      }
 
-  .anniversary-badge span {
-    font-size: 0.76rem;
-    max-width: 150px;
-  }
+      .anniversary-badge span {
+        font-size: 0.76rem;
+        max-width: 150px;
+      }
 
+      .critical-list {
+        grid-template-columns: 1fr;
+      }
+
+      .critical-notice {
+        padding: 22px;
+        border-radius: 24px;
+      }
 
       .container {
         width: min(100% - 28px, var(--container));
@@ -1810,8 +1872,6 @@
       <section class="hero">
         <div class="container hero-layout">
           <div class="hero-content" data-reveal>
-          
-
             <div class="anniversary-badge" aria-label="Yeditepe Üniversitesi 30. Yıl">
               <img src="assets/yeditepe-logo-full-transparent.png" alt="Yeditepe Üniversitesi 30. Yıl Logosu" />
               <span data-lang="tr">30. yıl ruhuyla mezuniyet gecesi</span>
@@ -2020,12 +2080,69 @@
             <p class="section-lead" data-lang="en">Before filling out the form, make sure your payment description is complete and your receipt is ready to upload.</p>
           </div>
 
+          <div class="critical-notice" data-reveal>
+            <h3 data-lang="tr">Kayıt öncesi kritik bilgilendirme</h3>
+            <h3 data-lang="en">Critical information before registration</h3>
+            <p class="notice-intro" data-lang="tr">
+              Organizasyonun sorunsuz ilerlemesi ve gecenizin kusursuz geçmesi için formu doldurmadan önce aşağıdaki maddeleri dikkatle okuyunuz. Başvurunuzun geçerli sayılması için tüm bilgilerin eksiksiz ve doğru girilmesi gerekmektedir.
+            </p>
+            <p class="notice-intro" data-lang="en">
+              Please read the following points carefully before completing the form so that the organization can proceed smoothly and your evening can be seamless. All information must be complete and accurate for your application to be considered valid.
+            </p>
+
+            <div class="critical-list">
+              <div class="critical-item">
+                <strong data-lang="tr">Kayıt geçerliliği</strong>
+                <strong data-lang="en">Registration validity</strong>
+                <p data-lang="tr">Formun tamamlanması ve ödeme dekontunun yalnızca PDF formatında sistemin son aşamasında yüklenmesi zorunludur.</p>
+                <p data-lang="en">The form must be completed and the payment receipt must be uploaded only in PDF format at the final stage of the system.</p>
+              </div>
+              <div class="critical-item">
+                <strong data-lang="tr">Sınırlı kontenjan</strong>
+                <strong data-lang="en">Limited capacity</strong>
+                <p data-lang="tr">Etkinlik sınırlı kontenjana sahiptir. Kontenjan dolduğu andan itibaren form başvurulara kapatılacaktır.</p>
+                <p data-lang="en">The event has limited capacity. Once the quota is full, the form will be closed to new applications.</p>
+              </div>
+              <div class="critical-item">
+                <strong data-lang="tr">Masa yerleşimi</strong>
+                <strong data-lang="en">Table seating</strong>
+                <p data-lang="tr">Masalar mezun ve misafirler dahil maksimum 10 kişiliktir. Grup olarak oturmak isteyenlerin “Grup Lideri Öğrenci Numarası” kuralına uyması gerekir.</p>
+                <p data-lang="en">Tables accommodate a maximum of 10 people including graduates and guests. Groups wishing to sit together must follow the “Group Leader Student Number” rule.</p>
+              </div>
+              <div class="critical-item">
+                <strong data-lang="tr">Misafir kısıtlaması</strong>
+                <strong data-lang="en">Guest limitation</strong>
+                <p data-lang="tr">Her mezunumuzun yalnızca +1 misafir getirme hakkı bulunmaktadır.</p>
+                <p data-lang="en">Each graduate may bring only one additional guest.</p>
+              </div>
+              <div class="critical-item">
+                <strong data-lang="tr">Güvenlik ve giriş</strong>
+                <strong data-lang="en">Security and entrance</strong>
+                <p data-lang="tr">Çırağan Sarayı güvenlik protokolleri gereği formdaki TC Kimlik No ve isim bilgilerinin doğruluğu esastır. Girişte kimlik kontrolü yapılacaktır.</p>
+                <p data-lang="en">Due to Çırağan Palace security protocols, the accuracy of ID number and name information is essential. ID checks will be carried out at the entrance.</p>
+              </div>
+              <div class="critical-item">
+                <strong data-lang="tr">Onay süreci</strong>
+                <strong data-lang="en">Approval process</strong>
+                <p data-lang="tr">Dekontunuz ve bilgileriniz kontrol edildikten sonra onay durumunuz tarafınıza e-posta ile bildirilecektir.</p>
+                <p data-lang="en">After your receipt and information are checked, your approval status will be sent to you by e-mail.</p>
+              </div>
+            </div>
+
+            <div class="quota-alert" data-lang="tr">
+              <strong>Önemli:</strong> Kontenjan dolduktan sonra form kapatılacak ve bu aşamadan sonra ödeme yapmış olsanız dahi başvurunuz kabul edilemeyecektir. Kaydını tamamlayan katılımcıların bilgilerinde, organizasyonun son aşamalarında teknik ve operasyonel nedenlerle değişiklik yapılamayabilir. Lütfen tüm bilgileri son halinden emin olarak giriniz.
+            </div>
+            <div class="quota-alert" data-lang="en">
+              <strong>Important:</strong> Once the quota is full, the form will be closed and applications cannot be accepted after this point, even if payment has already been made. Changes to participant information, such as guest changes or table code updates, may not be possible in the final stages for technical and operational reasons. Please enter all information only after making sure it is final.
+            </div>
+          </div>
+
           <div class="steps-layout">
             <aside class="sticky-cta-card" data-reveal>
               <h3 data-lang="tr">Balo katılım ücretleri</h3>
               <h3 data-lang="en">Participation fees</h3>
-              <p data-lang="tr">Katılım, mekan kapasitesi nedeniyle kontenjanla sınırlıdır. Kontenjan dolduğunda form erken kapatılabilir.</p>
-              <p data-lang="en">Participation is limited by venue capacity. The form may close earlier if the quota is filled.</p>
+              <p data-lang="tr">Katılım sınırlı kontenjanla gerçekleşecektir. Kontenjan dolduğu anda form başvurulara kapatılacak ve bu aşamadan sonra ödeme yapılmış olsa dahi başvuru kabul edilemeyecektir.</p>
+              <p data-lang="en">Participation is limited by quota. Once the quota is full, the form will be closed and applications cannot be accepted after that point, even if payment has already been made.</p>
 
               <div class="price-grid">
                 <div class="price-card">
@@ -2093,8 +2210,8 @@
                 <div>
                   <h3 data-lang="tr">Formu doldurun ve dekontu yükleyin.</h3>
                   <h3 data-lang="en">Fill out the form and upload your receipt.</h3>
-                  <p data-lang="tr">Mezuniyet balosu katılım ücreti ödeme dekontu formda ilgili alana yüklenmelidir. Form tamamlandığında kayıt süreciniz değerlendirmeye alınır.</p>
-                  <p data-lang="en">The payment receipt for the Graduation Ball fee must be uploaded to the relevant field in the form. Once submitted, your registration will be processed.</p>
+                  <p data-lang="tr">Mezuniyet Balosu katılım ücreti ödeme dekontu formun son aşamasında yalnızca PDF formatında yüklenmelidir. Dekontunuz ve bilgileriniz kontrol edildikten sonra onay durumunuz e-posta ile bildirilecektir.</p>
+                  <p data-lang="en">The Graduation Ball payment receipt must be uploaded only in PDF format at the final stage of the form. After your receipt and information are checked, your approval status will be sent by e-mail.</p>
                   <div class="hero-actions">
                     <a class="btn btn-primary js-register" href="#" data-lang="tr">Formu Aç</a>
                     <a class="btn btn-primary js-register" href="#" data-lang="en">Open Form</a>
@@ -2110,20 +2227,20 @@
             <article class="notice-card" data-reveal>
               <strong data-lang="tr">+1 misafir sınırı</strong>
               <strong data-lang="en">+1 guest limit</strong>
-              <p data-lang="tr">Misafir katılımcı sayısı yalnızca 1 kişi ile sınırlıdır.</p>
-              <p data-lang="en">The number of guest participants is limited to one person.</p>
+              <p data-lang="tr">Her mezunumuzun yalnızca +1 misafir getirme hakkı bulunmaktadır. Misafir bilgilerini formda son halinden emin olarak giriniz.</p>
+              <p data-lang="en">Each graduate may bring only one additional guest. Please enter guest information only after making sure it is final.</p>
             </article>
             <article class="notice-card" data-reveal>
               <strong data-lang="tr">Masa kodu</strong>
               <strong data-lang="en">Table code</strong>
-              <p data-lang="tr">Aynı masada oturmak isteyen grup üyeleri, masa kodu alanına grup liderinin öğrenci numarasını başında “U” harfi olmadan girmelidir.</p>
-              <p data-lang="en">Groups wishing to sit together should enter the selected group leader’s student number in the table code field, without the “U” prefix.</p>
+              <p data-lang="tr">Aynı masada oturmak isteyen grup üyeleri, Bölüm 10’da belirtilen “Grup Lideri Öğrenci Numarası” kuralına uymalıdır. 10 kişiyi aşan gruplar sistem tarafından otomatik olarak bölünebilir.</p>
+              <p data-lang="en">Groups wishing to sit together must follow the “Group Leader Student Number” rule stated in Section 10. Groups exceeding 10 people may be automatically split by the system.</p>
             </article>
             <article class="notice-card" data-reveal>
               <strong data-lang="tr">Masa kapasitesi</strong>
               <strong data-lang="en">Table capacity</strong>
-              <p data-lang="tr">Masalar maksimum 10 kişiliktir. 10 kişiden az gruplar doluluk durumuna göre diğer katılımcılarla birleştirilebilir.</p>
-              <p data-lang="en">Tables accommodate up to 10 people. Groups of fewer than 10 may be combined with other participants based on occupancy.</p>
+              <p data-lang="tr">Masalar mezun ve misafirler dahil maksimum 10 kişi kapasitelidir. 10 kişiden az gruplar doluluk durumuna göre diğer katılımcılarla birleştirilebilir.</p>
+              <p data-lang="en">Tables accommodate a maximum of 10 people including graduates and guests. Groups of fewer than 10 may be combined with other participants depending on occupancy.</p>
             </article>
           </div>
         </div>
@@ -2249,15 +2366,15 @@
             <details data-reveal>
               <summary data-lang="tr">Dekont yüklemek zorunlu mu?</summary>
               <summary data-lang="en">Is uploading the receipt required?</summary>
-              <p data-lang="tr">Evet. Mezuniyet balosu katılım ücreti ödeme dekontu formu doldururken yüklenmelidir.</p>
-              <p data-lang="en">Yes. The payment receipt for the Graduation Ball fee must be uploaded while filling out the form.</p>
+              <p data-lang="tr">Evet. Ödeme dekontu formun son aşamasında yalnızca PDF formatında yüklenmelidir.</p>
+              <p data-lang="en">Yes. The payment receipt must be uploaded only in PDF format at the final stage of the form.</p>
             </details>
 
             <details data-reveal>
               <summary data-lang="tr">Form ne zaman kapanır?</summary>
               <summary data-lang="en">When will the form close?</summary>
-              <p data-lang="tr">Katılım kontenjanla sınırlıdır. Kontenjanın dolması durumunda form erken tarihte kapatılabilir.</p>
-              <p data-lang="en">Participation is limited by quota. If capacity is reached, the form may close earlier.</p>
+              <p data-lang="tr">Katılım sınırlı kontenjanla gerçekleşecektir. Kontenjan dolduğu anda form başvurulara kapatılır ve bu aşamadan sonra ödeme yapılmış olsa dahi başvuru kabul edilemez.</p>
+              <p data-lang="en">Participation is limited by quota. Once the quota is full, the form will be closed and applications cannot be accepted after that point, even if payment has already been made.</p>
             </details>
           </div>
         </div>
@@ -2270,8 +2387,8 @@
             <div class="section-kicker" data-lang="en">Class of 2026</div>
             <h2 data-lang="tr">Bu geceyi kaçırma. Yeditepe hikâyenin en parlak sayfasında yerini al.</h2>
             <h2 data-lang="en">Do not miss this night. Take your place on the brightest page of your Yeditepe story.</h2>
-            <p data-lang="tr">Sizleri aramızda görmek için sabırsızlanıyoruz. Formu doldurun, dekontunuzu yükleyin ve 13 Temmuz gecesi için yerinizi ayırın.</p>
-            <p data-lang="en">We look forward to seeing you among us. Fill out the form, upload your receipt, and reserve your place for July 13.</p>
+            <p data-lang="tr">Sizleri aramızda görmek için sabırsızlanıyoruz. Katılım sınırlı kontenjanla gerçekleşecektir; kontenjan dolduğunda form erken kapatılabilir. Formu doldurun, PDF dekontunuzu yükleyin ve 13 Temmuz gecesi için yerinizi ayırın.</p>
+            <p data-lang="en">We look forward to seeing you among us. Participation is limited by quota and the form may close early once capacity is reached. Fill out the form, upload your PDF receipt, and reserve your place for July 13.</p>
             <div class="hero-actions">
               <a class="btn btn-primary js-register" href="#" data-lang="tr">Hemen Kayıt Ol</a>
               <a class="btn btn-primary js-register" href="#" data-lang="en">Register Now</a>
@@ -2298,7 +2415,7 @@
   </div>
 
   <script>
-    const FORM_URL = "https://docs.google.com/forms/d/1fhDW1L8z1s8Pujw1N8EjS9bS0nPoM-bbMWatD83n9bE/edit?ts=69ff26ad";
+    const FORM_URL = "GOOGLE_FORM_LINKINI_BURAYA_YAPISTIR";
     const EVENT_DATE = new Date("2026-07-13T19:30:00+03:00");
 
     const $ = (selector, scope = document) => scope.querySelector(selector);
